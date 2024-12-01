@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    ALLOWED_HOSTS = ["*"]
+    # ALLOWED_HOSTS = ["*"]
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoproj.settings')
     try:
