@@ -45,11 +45,13 @@ def registration(request):
     last_name = data['lastName']
     email = data['email']
     
-    
     # Check if user already exists
     username_exist = User.objects.filter(username=username).exists()
     if username_exist:
-        return JsonResponse({"userName": username, "error": "Already Registered"})
+        return JsonResponse({
+            "userName": username,
+            "error": "Already Registered"
+        })
     # If user doesn't exist, create a new user
     user = User.objects.create_user(
         username=username,
@@ -69,7 +71,7 @@ def get_cars(request):
     car_models = CarModel.objects.select_related('car_make')
     cars = [{"CarModel": car_model.name, "CarMake": car_model.car_make.name}
             for car_model in car_models
-    ]
+           ]
     return JsonResponse({"CarModels": cars})
 
 
